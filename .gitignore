@@ -18,6 +18,7 @@ data_input/
 *.log
 *.tmp
 *.cache
+*notes*
 
 # Other generated outputs
 *.coveragefin.txt
