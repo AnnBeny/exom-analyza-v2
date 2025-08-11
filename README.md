@@ -13,7 +13,6 @@ Interaktivní nástroj v R Shiny pro rychlý screening a kontrolu CNV odchylek (
 ---
 
 ## Struktura projektu
-- **exom_analyza_cktch/** – kořenová složka projektu  
   - **app/** – Shiny aplikace *(app.R / helpers.R; UI+server v jednom souboru)*  
   - **reference/** – OMIM referenční soubory
   - **CNV_exom.desktop** – spouštěč (Linux)  
