@@ -1,6 +1,7 @@
 # CNV Analýza Exomy rozšíření
 
 Interaktivní nástroj v R Shiny pro rychlý screening a kontrolu CNV odchylek (Copy Number Variations) z exomového sekvenování. Umožňuje:
+
 - nahrát více souborů *.coveragefin.txt* (1 soubor = 1 vzorek),
 - přiřadit pohlaví ke každému vzorku (M/Ž) a zvolit rozsahy/oblasti k vyloučení,
 - filtrovat podle chromozomu X (vše / bez X / pouze X),
@@ -13,17 +14,19 @@ Interaktivní nástroj v R Shiny pro rychlý screening a kontrolu CNV odchylek (
 ---
 
 ## Struktura projektu
-  - **app/** – Shiny aplikace *(app.R / helpers.R; UI+server v jednom souboru)*  
-  - **reference/** – OMIM referenční soubory
-  - **CNV_exom.desktop** – spouštěč (Linux)  
-  - **launch.sh** – spouštěcí skript (Linux)  
-  - **launch_app.bat** – spouštěcí skript (Windows)  
-  - **icon_exom2.png** – ikona  
-  - **icon_exom2.ico** – ikona (Windows)  
+
+- **app/** – Shiny aplikace *(app.R / helpers.R; UI+server v jednom souboru)*  
+- **reference/** – OMIM referenční soubory
+- **CNV_exom.desktop** – spouštěč (Linux)  
+- **launch.sh** – spouštěcí skript (Linux)  
+- **launch_app.bat** – spouštěcí skript (Windows)  
+- **icon_exom2.png** – ikona  
+- **icon_exom2.ico** – ikona (Windows)  
 
 ---
 
 ## Požadavky
+
 - **R ≥ 4.1**
 - R balíčky: `shiny`, `bslib`, `DT`, `magrittr`
   - instalace: `install.packages(c("shiny", "bslib", "DT", "magrittr"))`
@@ -31,7 +34,9 @@ Interaktivní nástroj v R Shiny pro rychlý screening a kontrolu CNV odchylek (
 ---
 
 ## Formát vstupu
+
 Soubory s příponou **.coveragefin.txt**, tabulátorově oddělené, sloupce v pořadí:
+
 1. `chr`
 2. `start`
 3. `stop`
@@ -44,6 +49,7 @@ Soubory s příponou **.coveragefin.txt**, tabulátorově oddělené, sloupce v 
 ---
 
 ## Jak aplikaci spustit
+
 - **Windows:** zástupce napojený na `launch_app.bat`
 - **Linux:** zástupce/ikona napojená na `launch.sh`
 
@@ -52,6 +58,7 @@ Anebo přímo v R: `shiny::runApp()` ve složce aplikace.
 ---
 
 ## Postup práce (UI)
+
 1. **Nahrát soubory** `.coveragefin.txt` (lze víc najednou).
 2. **Pohlaví vzorků:** u každého vzorku vybrat *Muž/Žena*.
 3. **Filtry (volitelné):**
@@ -69,6 +76,7 @@ Anebo přímo v R: `shiny::runApp()` ve složce aplikace.
 ---
 
 ## Výstupy (CSV)
+
 - **coveragemeanALL.csv** – spojení pozic + průměrné pokrytí všech vzorků.
 - **CNV_M_mean.csv** – normalizované hodnoty pro mužské vzorky (jen řádky s vychýlením > 0,25; vč. OMIM).
 - **CNV_Z_mean.csv** – totéž pro ženské vzorky.
@@ -77,6 +85,7 @@ Anebo přímo v R: `shiny::runApp()` ve složce aplikace.
 ---
 
 ## OMIM reference
+
 - Umístění: `reference/` (např. `omim-phenptype-2024-upr-sl67.txt`).
 - Formát: tab-delimited; 1. sloupec = gen, další = fenotypy.
 - Načtení zajišťuje `load_omim_file()`; anotace provádí `annotate_with_omim()`.
@@ -84,6 +93,7 @@ Anebo přímo v R: `shiny::runApp()` ve složce aplikace.
 ---
 
 ## Poznámky k filtrování
+
 - **Geny/oblasti:** vybrané názvy se z výsledků **vyloučí** (regexově – zahrnuje i varianty názvů s příponami).
 - **Start/Stop:** řádky s pozicemi v uvedených seznamech se **vyloučí**.
 - **Chromozom X:** přepínač ovlivní všechny tabulky (ALL/CNV i procenta).
@@ -91,8 +101,8 @@ Anebo přímo v R: `shiny::runApp()` ve složce aplikace.
 ---
 
 ## Časté potíže a tipy
+
 - **Prázdné tabulky CNV:** zkontrolujte, zda některé normalizované hodnoty přesahují **±0,25**; jinak se nic nezobrazí.
 - **Nesprávné sloupce:** vstup musí mít přesně 6 sloupců v uvedeném pořadí.
 - **Chybí OMIM anotace:** ověřte cestu k referenčnímu souboru a kódování/oddělovače.
 - **Názvy chromozomů:** skript odstraňuje u `chr` uvozovky; formát vstupu by měl být konzistentní.
-
