@@ -387,9 +387,9 @@ server <- function(input, output, session) {
           base_name <- tools::file_path_sans_ext(gsub(".coveragefin\\.txt$", "", filenames[i])) # nolint
           gender <- input[[paste0("pohlavi", ids[i])]]
           colnames(selected) <- paste0(gender, "_", base_name)
-          return(selected)
           cat("---gender---\n")
           print(gender)
+          return(selected)
         }, error = function(e) {
           showNotification(paste("Chyba u souboru:", filenames[i]), type = "error") # nolint
           return(NULL)
