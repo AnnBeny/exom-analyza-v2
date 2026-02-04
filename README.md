@@ -106,3 +106,14 @@ Anebo přímo v R: `shiny::runApp()` ve složce aplikace.
 - **Nesprávné sloupce:** vstup musí mít přesně 6 sloupců v uvedeném pořadí.
 - **Chybí OMIM anotace:** ověřte cestu k referenčnímu souboru a kódování/oddělovače.
 - **Názvy chromozomů:** skript odstraňuje u `chr` uvozovky; formát vstupu by měl být konzistentní.
+
+---
+
+Enjoy!
+
+
+🍬 2025 · [@AnnBeny](https://github.com/AnnBeny)
+
+![Shiny](https://img.shields.io/badge/app-shiny-007FFF?style=for-the-badge)
+![domain](https://img.shields.io/badge/domain-bioinformatics-6A5ACD?style=for-the-badge)
+![python](https://img.shields.io/badge/python-3.10+-blue?style=for-the-badge)
