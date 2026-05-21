@@ -73,6 +73,8 @@ Anebo přímo v R: `shiny::runApp()` ve složce aplikace.
 
 > Pozn.: Tabulky s *procentuálním pokrytím* (6. sloupec) jsou v kódu připravené, ale v UI jsou aktuálně skryté. Lze je později zapnout (taby/btn pro `*_proc`).
 
+![Ukázka aplikace](img/exomapp2.png)
+
 ---
 
 ## Výstupy (CSV)
